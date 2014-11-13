@@ -19,6 +19,7 @@ Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('role', 'Role');
+Route::model('rssfeed', 'RssFeed');
 
 /** ------------------------------------------
  *  Route constraint patterns
@@ -79,6 +80,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
  */
 
 // User reset routes
+
 Route::get('user/reset/{token}', 'UserController@getReset');
 // User password reset
 Route::post('user/reset/{token}', 'UserController@postReset');
@@ -90,6 +92,25 @@ Route::post('user/login', 'UserController@postLogin');
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
+
+//:: Rss Feeds Routes ::
+Route::group(array('prefix' => 'rssfeed', 'before' => 'auth'), function()
+{
+    Route::get('/{rssfeed}/edit', 'RssFeedController@getEdit');
+    Route::post('/{rssfeed}/edit', 'RssFeedController@postEdit');
+    Route::get('/{rssfeed}/delete', 'RssFeedController@getDelete');
+    Route::post('/{rssfeed}/delete', 'RssFeedController@postDelete');
+
+    Route::get('/index', 'RssFeedController@getIndex');
+
+    Route::get('/data', 'RssFeedController@getData');
+
+    # RssFeed RESTful Routes
+    Route::controller('/', 'RssFeedController');
+});
+
+Route::get('rssfeeds/data', 'RssFeedsController@getData');
+Route::get('rssfeeds', 'RssFeedsController@getIndex');
 
 //:: Application Routes ::
 

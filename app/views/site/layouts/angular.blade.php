@@ -30,6 +30,8 @@
         <link rel="stylesheet" href="{{asset('assets/css/wysihtml5/bootstrap-wysihtml5.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/datatables-bootstrap.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/colorbox.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/angularjs-rss-reader/css/app.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/angularjs-rss-reader/css/reset.css')}}">
 		<style>
         body {
             padding: 60px 0;
@@ -73,7 +75,6 @@
                         @if (Auth::check())
                         <li {{ (Request::is('/rssfeed/index') ? ' class="active"' : '') }}><a href="{{{ URL::to('/rssfeed/index') }}}">Manage Rss Feeds</a></li>
                         @endif
-
 					</ul>
 
                     <ul class="nav navbar-nav pull-right">
@@ -120,20 +121,12 @@
 
 		<!-- Javascripts
 		================================================== -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('assets/js/wysihtml5/wysihtml5-0.3.0.js')}}"></script>
-        <script src="{{asset('assets/js/wysihtml5/bootstrap-wysihtml5.js')}}"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-        <script src="{{asset('assets/js/datatables-bootstrap.js')}}"></script>
-        <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
-        <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
-        <script src="{{asset('assets/js/prettify.js')}}"></script>
-
-        <script type="text/javascript">
-            $('.wysihtml5').wysihtml5();
-            $(prettyPrint);
-        </script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/ext/array.js')}}"></script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/lib/components/angular/angular.js')}}"></script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/interceptors/httpStateInterceptor.js')}}"></script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/app.js')}}"></script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/services/feedService.js')}}"></script>
+        <script src="{{asset('assets/js/angularjs-rss-reader/app/controllers/rssController.js')}}"></script>
 
         @yield('scripts')
 	</body>
